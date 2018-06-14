@@ -6,8 +6,13 @@ public class Projectile : MonoBehaviour {
 
 	[SerializeField]public Hitters canFlyTrough;
 	[SerializeField]public Hitters damages;
-
+	public Sprite sprite;
 	public int damage;
+
+	void Start(){
+		GetComponent<SpriteRenderer> ().sprite = sprite;
+	}
+
 
 	void OnCollisionEnter2D(Collision2D coll){
 		if (damages.players && coll.collider.CompareTag ("Player")) {

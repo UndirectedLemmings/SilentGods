@@ -30,9 +30,6 @@ public class PlayerAimAndFire : NetworkBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!isLocalPlayer) {
-			return;
-		}
 		RaycastHit2D[] creatures = Physics2D.CircleCastAll (transform.position, AimRadius, Vector2.zero, 0, LayerMask.GetMask ("Creatures"));
 		List<GameObject> enemies = new List<GameObject>();
 		foreach (RaycastHit2D c in creatures) {
@@ -65,13 +62,14 @@ public class PlayerAimAndFire : NetworkBehaviour {
 			} else {
 				GetComponent<SpriteRenderer> ().flipX = false;
 			}
-			if (CrossPlatformInputManager.GetButton("Fire1")) {
-				if (Time.time >= nextShot) {
-					nextShot += FireInterval;
-					CmdFire ();
+			if (isLocalPlayer) {
+				if (CrossPlatformInputManager.GetButton ("Fire1")) {
+					if (Time.time >= nextShot) {
+						nextShot += FireInterval;
+						CmdFire ();
+					}
 				}
 			}
-
 		} else {
 			aimImg.enabled = false;
 		}

@@ -248,7 +248,7 @@ MonoBehaviour:
     i14: 74
     i15: 85
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114728597898432050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -263,8 +263,8 @@ MonoBehaviour:
   eyes: {fileID: 20385505126806258}
   ears: {fileID: 81843014245682042}
   AimedAt: {fileID: 0}
-  AimRadius: 5
-  FireInterval: 0.1
+  AimRadius: 10
+  FireInterval: 0.05
   projectile: {fileID: 1708473699734216, guid: 53b70457f80a49c4e8dafb70f270abd1, type: 2}
   gun: {fileID: 4953838534892586}
   bulletLifetime: 2
