@@ -16,7 +16,7 @@ public class PlayerAimAndFire : NetworkBehaviour {
 	public float bulletLifetime=2.0f;
 	public float bulletVelocity=6.0f;
 
-	bool flippedX;
+
 	int enemyIndex=0;
 	float nextShot;
 	Image aimImg;
@@ -64,16 +64,16 @@ public class PlayerAimAndFire : NetworkBehaviour {
 			}
 			if (AimedAt.transform.position.x < transform.position.x) {
 				GetComponent<SpriteRenderer> ().flipX = true;
-				flippedX = true;
+
 			} else {
 				GetComponent<SpriteRenderer> ().flipX = false;
-				flippedX = false;
+
 			}
 			if (isLocalPlayer) {
 				if (CrossPlatformInputManager.GetButton ("Fire1")) {
 					if (Time.time >= nextShot) {
-						nextShot += FireInterval;
-						CmdFire (flippedX);
+						nextShot =Time.time+ FireInterval;
+						CmdFire (GetComponent<SpriteRenderer>().flipX);
 					}
 				}
 			}
@@ -87,9 +87,7 @@ public class PlayerAimAndFire : NetworkBehaviour {
 	void CmdFire(bool flipX){
 		Transform truegun = gun;
 		Vector3 pos = gun.localPosition;
-		if (flipX) {
-			pos.x = -pos.x;
-		}
+		pos.x = flipX ? -Mathf.Abs(pos.x) :Mathf.Abs( pos.x);
 		truegun.localPosition = pos;
 		var bullet = (GameObject)Instantiate (
 			             projectile,

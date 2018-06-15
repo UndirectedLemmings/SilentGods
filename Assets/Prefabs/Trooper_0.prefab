@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114588652644289948}
   - component: {fileID: 114395468120444980}
   - component: {fileID: 70626052086811288}
+  - component: {fileID: 114229069933060948}
   m_Layer: 8
   m_Name: Trooper_0
   m_TagString: Player
@@ -204,6 +205,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114229069933060948
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1038402614863628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2048a64785e0ff1468b4043d43715b85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 500
+  defence: 7
+  Threat: 5
+  currentHealth: 500
 --- !u!114 &114395468120444980
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -284,9 +300,9 @@ MonoBehaviour:
   ears: {fileID: 81843014245682042}
   AimedAt: {fileID: 0}
   AimRadius: 10
-  FireInterval: 0.05
+  FireInterval: 0.2
   projectile: {fileID: 1708473699734216, guid: 53b70457f80a49c4e8dafb70f270abd1, type: 2}
-  gun: {fileID: 4953838534892586}
+  gun: {fileID: 4543813915534994}
   bulletLifetime: 2
   bulletVelocity: 3
 --- !u!124 &124146212729362918
