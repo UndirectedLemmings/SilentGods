@@ -16,6 +16,7 @@ public class PlayerAimAndFire : NetworkBehaviour {
 	public float bulletLifetime=2.0f;
 	public float bulletVelocity=6.0f;
 
+	bool flippedX;
 	int enemyIndex=0;
 	float nextShot;
 	Image aimImg;
@@ -37,8 +38,10 @@ public class PlayerAimAndFire : NetworkBehaviour {
 				enemies.Add (c.transform.gameObject);
 			}
 		}
-		if (CrossPlatformInputManager.GetButtonDown ("Fire2")) {
-			enemyIndex++;
+		if (isLocalPlayer) {
+			if (CrossPlatformInputManager.GetButtonDown ("Fire2")) {
+				enemyIndex++;
+			}
 		}
 		if (enemyIndex >= enemies.Count) {
 			enemyIndex = 0;
@@ -51,22 +54,26 @@ public class PlayerAimAndFire : NetworkBehaviour {
 		}
 
 		if (AimedAt != null) {
+			if(isLocalPlayer){
 			aimImg.enabled = true;
 			//RectTransform rt = aimImg.GetComponent<RectTransform> ();
 
 			//rt.anchoredPosition = rt.InverseTransformPoint (AimedAt.transform.position);
 			//rt.position = AimedAt.transform.position;
-			aimImg.rectTransform.position = eyes.WorldToScreenPoint( AimedAt.transform.position);
+				aimImg.rectTransform.position = eyes.WorldToScreenPoint( AimedAt.transform.position);
+			}
 			if (AimedAt.transform.position.x < transform.position.x) {
 				GetComponent<SpriteRenderer> ().flipX = true;
+				flippedX = true;
 			} else {
 				GetComponent<SpriteRenderer> ().flipX = false;
+				flippedX = false;
 			}
 			if (isLocalPlayer) {
 				if (CrossPlatformInputManager.GetButton ("Fire1")) {
 					if (Time.time >= nextShot) {
 						nextShot += FireInterval;
-						CmdFire ();
+						CmdFire (flippedX);
 					}
 				}
 			}
@@ -77,14 +84,23 @@ public class PlayerAimAndFire : NetworkBehaviour {
 
 	}
 	[Command]
-	void CmdFire(){
+	void CmdFire(bool flipX){
+		Transform truegun = gun;
+		Vector3 pos = gun.localPosition;
+		if (flipX) {
+			pos.x = -pos.x;
+		}
+		truegun.localPosition = pos;
 		var bullet = (GameObject)Instantiate (
 			             projectile,
-			             gun.position,
-			             gun.rotation);
-		bullet.transform.LookAt (AimedAt.transform.position);
-		bullet.GetComponent<Rigidbody2D> ().velocity=bullet.transform.forward*bulletVelocity;
+			             truegun.position,
+			             truegun.rotation);
+		Vector3 dir = AimedAt.transform.position - truegun.position;
+		float angle = Mathf.Atan2 (dir.y, dir.x) * Mathf.Rad2Deg;
+		bullet.transform.rotation = Quaternion.AngleAxis (angle, Vector3.forward);
+		bullet.GetComponent<Rigidbody2D> ().velocity = dir.normalized * bulletVelocity;
 		NetworkServer.Spawn (bullet);
+		//bullet.GetComponent<Projectile> ().RpcActivateSprite ();
 		Destroy (bullet, bulletLifetime);
 	}
 

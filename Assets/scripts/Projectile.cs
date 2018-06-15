@@ -1,37 +1,61 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Projectile : MonoBehaviour {
+
+public class Projectile : NetworkBehaviour {
 
 	[SerializeField]public Hitters canFlyTrough;
 	[SerializeField]public Hitters damages;
 	public Sprite sprite;
 	public int damage;
-
+	public Collider2D co;
 	void Start(){
-		GetComponent<SpriteRenderer> ().sprite = sprite;
+		
 	}
 
 
+
 	void OnCollisionEnter2D(Collision2D coll){
+		bool destroy=false;
 		if (damages.players && coll.collider.CompareTag ("Player")) {
 			//TODO: damage
 		}
 		if (damages.mobs && coll.collider.CompareTag ("Mob")) {
 			//TODO: damage
 		}
-		if (canFlyTrough.players && coll.collider.CompareTag ("Player")) {
-			Physics2D.IgnoreCollision (GetComponent<Collider2D> (), coll.collider, true);
-		} else if (canFlyTrough.mobs && coll.collider.CompareTag ("Mob")) {
-			Physics2D.IgnoreCollision (GetComponent<Collider2D> (), coll.collider, true);
-		} else {
+		if (coll.collider.CompareTag ("Player")) {
+			if (canFlyTrough.players) {
+				Physics2D.IgnoreCollision (co, coll.collider, true);
+				destroy = false;
+			} else {
+				destroy = true;
+			}
+		} else if (coll.collider.CompareTag ("Mob")) {
+			if (canFlyTrough.mobs) {
+				Physics2D.IgnoreCollision (co, coll.collider, true);
+				destroy = false;
+			} else {
+				destroy = true;
+			}
+		} else if (coll.collider.CompareTag("Obstacle")){
+			destroy = true;
+		}
+		if (destroy) {
 			Destroy (gameObject);
 		}
 
-
-
 	}
+
+
+	[ClientRpcAttribute]
+	public void RpcActivateSprite(){
+		GetComponent<SpriteRenderer> ().sprite = sprite;
+
+		//Debug.Log ("Sprite activated!");
+	}
+
 }
 
 
