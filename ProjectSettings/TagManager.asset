@@ -7,6 +7,8 @@ TagManager:
   - Mob
   - Aim
   - Obstacle
+  - HealthBar
+  - EnergyBar
   layers:
   - Default
   - TransparentFX

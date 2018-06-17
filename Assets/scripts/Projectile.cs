@@ -10,12 +10,15 @@ public class Projectile : NetworkBehaviour {
 	[SerializeField]public Hitters damages;
 	public Sprite sprite;
 	public Dmg damage;
-	public Collider2D co;
+    public Collider2D co;
+    Vector2 vel;
 	void Start(){
 		
 	}
 
-
+    void Update() {
+        vel = GetComponent<Rigidbody2D>().velocity;
+    }
 
 	void OnCollisionEnter2D(Collision2D coll){
 		bool destroy=false;
@@ -49,9 +52,16 @@ public class Projectile : NetworkBehaviour {
 		} else if (coll.collider.CompareTag("Obstacle")){
 			destroy = true;
 		}
-		if (destroy) {
-			Destroy (gameObject);
-		}
+        if (destroy)
+        {
+            Destroy(gameObject);
+        }
+        else {
+            if (vel.magnitude > 0.1) {
+                GetComponent<Rigidbody2D>().velocity = vel;
+            }
+           
+        }
 
 	}
 

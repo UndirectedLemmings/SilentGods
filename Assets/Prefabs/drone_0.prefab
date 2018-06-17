@@ -170,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AimRadius: 8
   projectile: {fileID: 1662062660403574, guid: 0bb59349d5bf9c1439472556ff4390fe, type: 2}
-  fireInterval: 0.3
+  fireInterval: 0.7
   bulletLifetime: 2
   bulletVelocity: 4
   gun: {fileID: 4470834630580254}
