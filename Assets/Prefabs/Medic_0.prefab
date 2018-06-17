@@ -252,7 +252,7 @@ MonoBehaviour:
   maxHealth: 250
   defence: 5
   Threat: 7
-  currentHealth: 500
+  currentHealth: 250
 --- !u!114 &114657101643846772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -301,8 +301,8 @@ MonoBehaviour:
   ears: {fileID: 81338527976145120}
   AimedAt: {fileID: 0}
   AimRadius: 10
-  FireInterval: 0.2
-  projectile: {fileID: 1708473699734216, guid: 53b70457f80a49c4e8dafb70f270abd1, type: 2}
+  FireInterval: 0.5
+  projectile: {fileID: 1331801772796020, guid: 98a77318960154843876cd80c389457d, type: 2}
   gun: {fileID: 4005813620548702}
   bulletLifetime: 3
   bulletVelocity: 4
