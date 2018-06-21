@@ -11,3 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Polygon1.unity
     guid: d7466ea15d757f541b825439228c1a9d
+  - enabled: 1
+    path: Assets/ExampleDungeon.unity
+    guid: 718f7a09f1f55704f884e6025f99f88d
+  m_configObjects: {}

@@ -76,7 +76,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1865395943843910}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.8373376, y: -7.175213, z: 0}
+  m_LocalPosition: {x: 8.024436, y: -7.228512, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4577676123901348}
@@ -91,7 +91,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1116276902216962}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.4, y: 0.025, z: 0}
+  m_LocalPosition: {x: 0.35, y: -0.025, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4162377103649570}
@@ -178,8 +178,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00050514936, y: 0.021500826}
-  m_Size: {x: 0.387066, y: 0.8127074}
+  m_Offset: {x: -0.15, y: -0.010581255}
+  m_Size: {x: 0.387066, y: 0.8768716}
   m_Direction: 0
 --- !u!81 &81291653009478654
 AudioListener:
@@ -369,7 +369,7 @@ SpriteRenderer:
   m_SortingLayerID: -2086542231
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300006, guid: 3a3e6d9ecca42f144b26d4f08f5e767d, type: 3}
+  m_Sprite: {fileID: 21300004, guid: a77e4ca277d11b948a51d31fa8c82368, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

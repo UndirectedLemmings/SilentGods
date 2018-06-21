@@ -8,7 +8,7 @@ public class ButtonDeactivator : MonoBehaviour {
     public bool activeAtStart;
 	// Use this for initialization
 	void Start () {
-        gameObject.SetActive(activeAtStart);
+        SetActive(activeAtStart);
 	}
 
     public void SetActive(bool value) {
