@@ -8,8 +8,17 @@ public class WalkingWithArrows : MonoBehaviour {
     CrossPlatformInputManager.VirtualAxis vertical;
 	// Use this for initialization
 	void Start () {
-		
-	}
+#if UNITY_EDITOR
+        enabled = true;
+#else
+#if UNITY_STANDALONE
+        enabled=true;
+#else
+        enabled=false;
+#endif
+#endif
+
+    }
 	
 	// Update is called once per frame
 	void Update () {

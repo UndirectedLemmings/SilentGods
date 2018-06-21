@@ -152,6 +152,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114980826717947466, guid: 85b67e1f881a4a6438fb7d5e3c4df486,
+        type: 2}
+      propertyPath: m_PlayScene
+      value: Polygon1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85b67e1f881a4a6438fb7d5e3c4df486, type: 2}
   m_IsPrefabParent: 0

@@ -31,6 +31,7 @@ public class PlayerAimAndFire : NetworkBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        bool forceChange = false;
 		RaycastHit2D[] creatures = Physics2D.CircleCastAll (transform.position, AimRadius, Vector2.zero, 0, LayerMask.GetMask ("Creatures"));
 		List<GameObject> enemies = new List<GameObject>();
 		foreach (RaycastHit2D c in creatures) {
@@ -41,17 +42,24 @@ public class PlayerAimAndFire : NetworkBehaviour {
 		if (isLocalPlayer) {
 			if (CrossPlatformInputManager.GetButtonDown ("Fire2")) {
 				enemyIndex++;
+                forceChange = true;
 			}
 		}
 		if (enemyIndex >= enemies.Count) {
 			enemyIndex = 0;
 		}
-		try{
-			AimedAt=enemies[enemyIndex];
-		}
-		catch(System.ArgumentOutOfRangeException){
-			AimedAt = null;
-		}
+        if (!enemies.Contains(AimedAt)||forceChange) {
+            try
+            {
+                AimedAt = enemies[enemyIndex];
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                AimedAt = null;
+            }
+
+        }
+		
 
 		if (AimedAt != null) {
 			if(isLocalPlayer){

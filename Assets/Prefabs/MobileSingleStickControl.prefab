@@ -324,6 +324,7 @@ GameObject:
   - component: {fileID: 114299515340135976}
   - component: {fileID: 114327132924023884}
   - component: {fileID: 114630503556122340}
+  - component: {fileID: 114954028263687830}
   m_Layer: 5
   m_Name: MobileJoystick
   m_TagString: Untagged
@@ -1204,7 +1205,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: 3a3e6d9ecca42f144b26d4f08f5e767d, type: 3}
+  m_Sprite: {fileID: 21300004, guid: a77e4ca277d11b948a51d31fa8c82368, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1286,6 +1287,7 @@ MonoBehaviour:
   - {fileID: 114327132924023884}
   - {fileID: 114468710141084594}
   - {fileID: 114351848720997244}
+  - {fileID: 114206187048741836}
 --- !u!114 &114817926069140942
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1445,6 +1447,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114954028263687830
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1693411575470366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a12e731abcbd70841b2af83c7c1e24c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114974299683534064
 MonoBehaviour:
   m_ObjectHideFlags: 1

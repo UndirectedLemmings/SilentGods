@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class Projectile : NetworkBehaviour {
 
 	[SerializeField]public Hitters canFlyTrough;
@@ -50,8 +51,15 @@ public class Projectile : NetworkBehaviour {
 				destroy = true;
 			}
 		} else if (coll.collider.CompareTag("Obstacle")){
-			destroy = true;
-		}
+            if (canFlyTrough.obstacles)
+            {
+                Physics2D.IgnoreCollision(co, coll.collider, true);
+                destroy = false;
+            }
+            else {
+                destroy = true;
+            }
+        }
         if (destroy)
         {
             Destroy(gameObject);
@@ -84,4 +92,5 @@ public struct Dmg{
 public struct Hitters{
 	public bool players;
 	public bool mobs;
+    public bool obstacles;
 }
